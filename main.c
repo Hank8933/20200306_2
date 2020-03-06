@@ -4,7 +4,7 @@
 #include <string.h>
 #define MAX 100
 
-int aba(char *string) //判斷迴文
+int aba(char *string) //判斷是否為迴文，是迴文回傳1，反之0
 {
     int i;
     int len;  //字串長度
@@ -13,11 +13,10 @@ int aba(char *string) //判斷迴文
 
     for(i = 0; i < (len/2); i++)
     {
-        if (string[i] != string[len-i-1])
+        if (string[i] != string[len-i-1])  //判斷
             return 0;
     }
-    if (i >= len/2)
-        return 1;
+    return 1;
 }
 
 int main()
@@ -41,7 +40,7 @@ int main()
 
     printf("\n\n迴文字串:\n");
 
-    for (i=1; i<=MAX; i++) //拆分字串，i=陣列字串
+    for (i=1; i<=MAX; i++) //拆分字串，i=字串長度
     {
         //printf("%d:\n",i);
         int left=0;
@@ -62,13 +61,12 @@ int main()
 
             //printf("%d %s\n",strlen(arrayTemp),arrayTemp);
 
-            if (aba(arrayTemp))
+            if (aba(arrayTemp))  //判斷是否為迴文
             {
                 printf("%s ",arrayTemp);
             }
         }
         printf("\n");
     }
-
     return 0;
 }
