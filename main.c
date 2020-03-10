@@ -2,21 +2,14 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <stdbool.h>
 #define MAX 100
 
-int aba(char *string) //判斷是否為迴文，是迴文回傳1，反之0
+_Bool aba(char *string,int left, int right) //判斷迴文
 {
-    int i;
-    int len;  //字串長度
-
-    len = strlen(string);
-
-    for(i = 0; i < (len/2); i++)
-    {
-        if (string[i] != string[len-i-1])  //判斷
-            return 0;
-    }
-    return 1;
+    if (string[left]!=string[right]) return false;
+    if (left>=right) return true;
+    else aba(string,++left,--right);
 }
 
 int main()
@@ -40,33 +33,23 @@ int main()
 
     printf("\n\n迴文字串:\n");
 
+    int left;
     for (i=1; i<=MAX; i++) //拆分字串，i=字串長度
     {
-        //printf("%d:\n",i);
-        int left=0;
-        char arrayTemp[i];
-        for (j=0; j<=i; j++)
-        {
-            arrayTemp[j] = '\0';
-        }
-        //printf("%d \n",strlen(arrayTemp));
         for (left=0; left<=MAX-i; left++) //left=字串開始
         {
-           // printf("l:%d\n",left);
-
-            for (j=0; j<i; j++) //填入臨時字串
+            //printf("%d %d\n", left, left+i-1);
+            if (aba(array, left, left+i-1))  //判斷是否為迴文
             {
-                arrayTemp[j]=array[left+j];
-            }
-
-            //printf("%d %s\n",strlen(arrayTemp),arrayTemp);
-
-            if (aba(arrayTemp))  //判斷是否為迴文
-            {
-                printf("%s ",arrayTemp);
+                for (j=left;j<left+i;j++)
+                {
+                    printf("%c",array[j]);
+                }
+                printf(" ");
             }
         }
         printf("\n");
     }
+	system("pause");
     return 0;
 }
