@@ -30,13 +30,13 @@ int main()
 
     printf("\n\n迴文字串:\n");
     int left;
-    for (i=1; i<=MAX; i++) //拆分字串，i=字串長度
+    for (i=1; i<=MAX; i++) //i=字串長度
     {
         for (left=0; left<=MAX-i; left++) //left=字串開始
         {
             if (aba(array, left, left+i-1))  //判斷是否為迴文
             {
-                for (j=left;j<left+i;j++)
+                for (j=left;j<left+i;j++)  //印出
                 {
                     printf("%c",array[j]);
                 }
