@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #define MAX 100
 
 int aba(char *string) //判斷是否為迴文，是迴文回傳1，反之0
