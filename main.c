@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <string.h>
 #include <stdbool.h>
 #define MAX 100
 
@@ -18,27 +17,23 @@ int main()
     int i,j;
 
     srand(time(NULL));
-
     for (i=0; i<MAX; i++)
     {
         array[i] = rand() %26 + 65;
     }
 
     printf("亂數字串\n");
-
     for (i=0; i<MAX; i++)
     {
         printf("%c ",*(array+i));
     }
 
     printf("\n\n迴文字串:\n");
-
     int left;
     for (i=1; i<=MAX; i++) //拆分字串，i=字串長度
     {
         for (left=0; left<=MAX-i; left++) //left=字串開始
         {
-            //printf("%d %d\n", left, left+i-1);
             if (aba(array, left, left+i-1))  //判斷是否為迴文
             {
                 for (j=left;j<left+i;j++)
